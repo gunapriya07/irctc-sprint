@@ -466,3 +466,120 @@ The UI should clearly reflect real package availability.
   - Hide counts temporarily if synchronization fails instead of showing incorrect values
 
 ---
+
+## Peer Review Updates
+
+### Review Summary
+
+The top two feature specs presented for peer review were:
+
+- Tatkal Booking Queue and Recovery System
+- Persistent and Accurate Train Search Filters
+
+The peer review discussion focused on:
+- Handling fairness during Tatkal queueing
+- Accessibility for low-end mobile users
+- Real-time availability synchronization challenges
+- Whether the proposed solutions could increase backend load
+- User trust during payment uncertainty
+
+Based on the feedback, the following updates were made to the specifications and prioritization matrix.
+
+---
+
+### Update 1 — Added Queue Fairness Protection (Tatkal System)
+**Feedback Received**
+
+A reviewer asked:
+
+“What prevents users with faster internet or bots from abusing the queue system?”
+
+**Spec Update Added**
+
+Add this under:
+
+Feature Spec 1 → Edge Cases and Constraints
+- Queue fairness enforcement:
+   - Requests must be ordered using server-side timestamps instead of client timestamps
+   - Duplicate sessions from the same account/device should be rate-limited
+   - Bot detection rules should throttle abnormal refresh or retry behavior
+
+**Why This Matters**
+
+This improves fairness and reduces abuse during Tatkal rush hours.
+
+---
+
+### Update 2 — Added Offline/Slow Network Handling (Search Filters)
+**Feedback Received**
+
+A reviewer pointed out:
+
+“Users in Tier 2 and Tier 3 cities may have unstable internet. What happens if filters partially load?”
+
+**Spec Update Added**
+
+Add this under:
+
+Feature Spec 2 → Graceful Degradation
+- If live filter refresh fails due to poor connectivity:
+   - Previously loaded results remain visible
+   - Active filters stay preserved locally on the device
+   - A warning banner displays:
+      "Showing last updated train availability"
+
+**Why This Matters**
+
+This prevents users from losing progress during unstable network conditions.
+
+---
+
+### Update 3 — Added Seat Hold Timeout Visibility
+**Feedback Received**
+
+A reviewer asked:
+
+“How will users know when their selected seat reservation expires?”
+
+**Spec Update Added**
+
+Add this under:
+
+Feature Spec 3 → Proposed User Flow
+
+Insert after Step 4:
+
+4A. User sees a visible countdown timer showing how long the seat will remain reserved.
+
+Also add under:
+
+Feature Spec 3 → Frontend Changes
+- Seat reservation countdown timer
+- Expiration warning popup before hold release
+
+**Why This Matters**
+
+This reduces confusion when selected seats are automatically released.
+
+---
+
+### Update 4 — Refined Success Metrics (Tatkal Feature)
+**Feedback Received**
+
+A reviewer suggested:
+
+“The success metrics should include system stability, not just user behavior.”
+
+**Spec Update Added**
+
+Update:
+
+Feature Spec 1 → Success Metrics
+
+Add:
+- Reduce HTTP 502/server timeout errors during Tatkal hours by at least 60%
+- Improve average booking response time during peak load
+
+**Why This Matters**
+
+This makes the metrics more technically measurable.

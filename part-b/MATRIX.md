@@ -64,3 +64,21 @@ This issue affects only users browsing tourism packages and does not interfere w
 4. Reliable Seat Selection Persistence — Important accessibility and family-booking improvement within the booking flow.
 5. Tatkal Booking Queue and Recovery System — Largest infrastructure-heavy initiative requiring careful phased rollout.
 6. Tour Package Filter Count Mismatch — Lower-priority tourism usability issue with limited impact compared to booking-related problems.
+
+## Peer Review Matrix Reconsideration
+
+During peer review, the placement of the “Persistent and Accurate Train Search Filters” feature was discussed.
+
+Initially, the feature was considered High Effort because it requires backend synchronization and live availability handling. However, reviewers suggested that much of the required infrastructure already exists in the current train search system.
+
+As a result, the effort assessment was reconsidered from:
+
+Very High Effort → Moderate-to-High Effort
+
+The feature remains in the High Impact / High Effort quadrant because:
+
+- It affects nearly all train-search users
+- It directly impacts booking confidence
+- Incorrect filtering can lead to failed booking decisions
+
+However, the review concluded that this feature could potentially be delivered earlier than originally planned if implemented incrementally.
