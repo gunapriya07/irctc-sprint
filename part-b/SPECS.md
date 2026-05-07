@@ -1,5 +1,4 @@
 # Feature Spec 1: Tatkal Booking Queue and Recovery System
-
 ### Problem Statement
 
 The IRCTC Tatkal booking system becomes unstable exactly at 10:00 AM when booking opens, causing freezes, session timeouts, CAPTCHA resets, and failed payments. Users cannot tell whether their booking request succeeded, failed, or is still processing, leading to panic refreshes and repeated clicks that worsen server overload. This affects millions of daily users, especially passengers who depend on Tatkal tickets for urgent travel.
